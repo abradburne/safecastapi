@@ -5,7 +5,7 @@ This will setup Safecast API server your local machine using Docker and Docker C
 
 You must have Docker and docker-compose installed. Tested using Docker v 17.09.0 and docker-compose 1.16.1
 
-#### Setting up the Docker images
+## Setting up the Docker images
 
 Clone the Safecast repo and perform the following commands from the safecastapi directory.
 
@@ -55,7 +55,7 @@ $ docker-compose up
 
 This will stay connected to the container and display the container output in the terminal window.
 
-#### Working with the dockerized application
+## Working with the dockerized application
 
 You can run commands on the Rails application container using the command `docker-compose exec api <COMMAND>`, for example:
 
@@ -77,7 +77,7 @@ $ docker-compose exec api rails c
 $ docker-compose exec postgres psql -h postgres -U safecast safecast_development
 ```
 
-#### Stopping and Deleting the containers
+## Stopping and Deleting the containers
 
 ### Stopping the containers
 

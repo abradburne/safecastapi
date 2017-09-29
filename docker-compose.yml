@@ -9,7 +9,6 @@ services:
     volumes:
       - .:/app
     environment:
-      # DATABASE_URL: postgis://safecast:secret@postgres:5432/safecast_development
       POSTGRES_USERNAME: safecast
       POSTGRES_PASSWORD:
       POSTGRES_HOST: postgres
@@ -32,7 +31,7 @@ services:
       - "pgdata:/var/lib/postgresql/data"
     environment:
       POSTGRES_USER: safecast
-      POSTGRES_PASSWORD: 
+      POSTGRES_PASSWORD:
       POSTGRES_DB: safecast_development
       PGDATA: /var/lib/postgresql/data/pgdata
 networks:
