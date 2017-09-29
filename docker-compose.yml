@@ -1,0 +1,41 @@
+version: '3'
+services:
+  api:
+    image: safecast_api
+    container_name: safecast_api
+    command: bundle exec rails server
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    environment:
+      DATABASE_URL: postgis://safecast:secret@postgres:5432/safecast_development
+      POSTGRES_USERNAME: safecast
+      POSTGRES_PASSWORD: secret
+      POSTGRES_HOST: postgres
+      RACK_ENV: development
+      RAILS_ENV: development
+    depends_on:
+      - postgres
+    networks:
+      - safecast_net
+    links:
+      - postgres
+  postgres:
+    image: mdillon/postgis:9.6
+    container_name: safecast_postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - safecast_net
+    volumes:
+      - "pgdata:/var/lib/postgresql/data"
+    environment:
+      POSTGRES_USER: safecast
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: safecast_development
+      PGDATA: /var/lib/postgresql/data/pgdata
+networks:
+  safecast_net:
+volumes:
+  pgdata:
